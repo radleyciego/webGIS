@@ -29,31 +29,31 @@
                 ctx.arc(0, 0, radius, 0, 2 * Math.PI);
                 ctx.fillStyle = 'white';
                 ctx.fill();
-
+                // create color stops corresponding to the inner, middle, and outer edge of the arc
                 grad = ctx.createRadialGradient(0, 0, radius * 0.95, 0, 0, radius * 1.05);
                 grad.addColorStop(0, '#333');
                 grad.addColorStop(0.5, 'white');
                 grad.addColorStop(1, '#333');
                 ctx.strokeStyle = grad;
-                ctx.lineWidth = radius*0.1;
-                ctx.stroke();
+                ctx.lineWidth = radius*0.1; // style the line width of the drawing object (10% of radius)
+                ctx.stroke(); // draw the circle
 
                 ctx.beginPath();
                 ctx.arc(0, 0, radius * 0.1, 0, 2 * Math.PI);
                 ctx.fillStyle = '#333';
-                ctx.fill();
+                ctx.fill(); // draw the clock center
             }
 
             function drawClock() {
                 drawFace(ctx, radius);
                 drawNumbers(ctx, radius);
             }
-
+            // calculate the print position for 12 numbers to 85% of the radius, rotated for each number (PI/6)
             function drawNumbers(ctx, radius) {
                 var ang;
                 var num;
-                ctx.font = radius * 0.15 + "px arial";
-                ctx.textBaseLine = "middle";
+                ctx.font = radius * 0.15 + "px arial"; // set the font size to 15% of the radius
+                ctx.textBaseLine = "middle"; // align the text to the middle and center of the print position
                 ctx.textAlign = "center";
                 for(num = 1; num < 13; num++){
                     ang = num * Math.PI / 6;
